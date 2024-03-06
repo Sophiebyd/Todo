@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <title>To do list</title>
+</head>
+
+<body>
+  <h1 class="text-center">To do list</h1>
+
+  <!-- barre de recherche -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Nouveau élément" aria-label="Recipient's username"
+            aria-describedby="basic-addon2" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- input -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <select class="form-select" aria-label="Choisir la priorité">
+          <option value="option1">Normale</option>
+          <option value="option2">Haute</option>
+          <option value="option2">Elevée</option>
+        </select>
+      </div>
+      <div class="col-md-3 d-flex align-items-end">
+        <div class="form-group flex-grow-1">
+          <input type="date" class="form-control" id="datepicker" name="datepicker" />
+        </div>
+        <button type="button" class="btn btn-primary ms-2">Ajouter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- tableau -->
+  <div class="container mt-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th colspan="5">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control mb-2" placeholder="Rechercher" />
+              </div>
+              <div class="col-md-6">
+                <select class="form-select mb-2" aria-label="Trier par">
+                  <option selected disabled hidden>Trier par</option>
+                  <option value="option1">Priorité +/-</option>
+                  <option value="option2">Priorité -/+</option>
+                  <option value="option3">Terminé Oui/Non</option>
+                  <option value="option4">Terminé Non/Oui</option>
+                  <option value="option5">Date limite +/-</option>
+                  <option value="option6">Date limite -/+</option>
+                  <option value="annuler">Annuler la sélection</option>
+                </select>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-check-input form-check-input-lg" type="checkbox" style="width: 2em; height: 2em;"></td>
+          <td>
+            <span class="badge bg-primary">Priorité normale</span>
+            <br>
+            <small class="form-text text-muted">pas de date limite</small>
+          </td>
+          <td>
+            <input type="text" class="form-control" placeholder="Element" id="elementData" readonly>
+          </td>
+          <td class="text-end"><button type="button" class="btn btn-danger">Effacer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
