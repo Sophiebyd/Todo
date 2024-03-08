@@ -41,6 +41,8 @@ smallText.classList.add = ('form-text', 'text-muted');
 const text = createElement('input');
 text.type = 'text';
 text.classList.add = ('form-control', 'formList');
+text.value = content.value;
+text.readOnly = true;
 
 //élement du bouton Effacer
 const btnDelete = createElement('button');
