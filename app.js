@@ -32,14 +32,16 @@ checkbox.style.height = '2em';
 //élément du badge 
 const badge = document.createElement('span');
 badge.classList.add = ('badge', 'bg-primary');
+badge.textContent = ('Priorité normale');
 
 //élement du petit texte
 const smallText = document.createElement('small');
 smallText.classList.add = ('form-text', 'text-muted');
+smallText.textContent = ('pas de date limite');
 
 //élement de l'input texte readonly
 const text = document.createElement('input');
-text.type = 'text';
+text.type = ('text');
 text.classList.add = ('form-control', 'formList');
 text.value = content.value;
 text.readOnly = true;
@@ -48,6 +50,7 @@ text.readOnly = true;
 const btnDelete = document.createElement('button');
 btnDelete.type = 'submit';
 btnDelete.classList.add = ('btn', 'btn-danger');
+btnDelete.textContent = ('Effacer');
 
 //placer le bouton effacer à la fin 
 tdBtnDelete.className = 'text-end';
