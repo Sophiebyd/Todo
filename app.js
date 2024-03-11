@@ -34,37 +34,36 @@ const badge = document.createElement('span');
 badge.classList.add = ('badge', 'bg-primary');
 
 //élement du petit texte
-const smallText = createElement('small');
+const smallText = document.createElement('small');
 smallText.classList.add = ('form-text', 'text-muted');
 
 //élement de l'input texte readonly
-const text = createElement('input');
+const text = document.createElement('input');
 text.type = 'text';
 text.classList.add = ('form-control', 'formList');
 text.value = content.value;
 text.readOnly = true;
 
 //élement du bouton Effacer
-const btnDelete = createElement('button');
+const btnDelete = document.createElement('button');
 btnDelete.type = 'submit';
 btnDelete.classList.add = ('btn', 'btn-danger');
 
 //placer le bouton effacer à la fin 
 tdBtnDelete.className = 'text-end';
 
-//relier les éléments au td
+//relier les éléments au td (cellules)
 tdCheckbox.appendChild(checkbox);
-tdBadgeText.appenchild(badge);
-tdBadgeText.appenchild(smallText);
+tdBadgeText.appendChild(badge);
+tdBadgeText.appendChild(smallText);
 tdText.appendChild(text);
-tdBtnDelete.appenchild(btnDelete);
+tdBtnDelete.appendChild(btnDelete);
 
-//relier les éléments au tr
-tr.appendChild(checkbox);
-tr.appendChild(badge);
-tr.appendChild(smallText);
-tr.appendChild(text);
-tr.appendChild(btnDelete);
+//relier les éléments au tr (lignes)
+tr.appendChild(tdCheckbox);
+tr.appendChild(tdBadgeText);
+tr.appendChild(tdText);
+tr.appendChild(tdBtnDelete);
 tableBody.appendChild(tr);
 
     event.preventDefault()
