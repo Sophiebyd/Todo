@@ -26,8 +26,6 @@ function addContent(event) {
     // récupérer la date
     const date = document.querySelector('#date').value;
 
-
-
     // ajouter une ligne à la table 
     const tr = document.createElement('tr');
 
@@ -109,14 +107,14 @@ function filterList(e) {
             const parent = select.closest('tr');
 
             if (word.indexOf(list) !== -1) {
-                parent.style.display = null ;
+                parent.style.display = null;
             } else {
                 parent.style.display = 'none';
             }
         }
     );
 
-    console.log(list); 
+    console.log(list);
 }
 
 // supprimer la ligne
@@ -139,3 +137,5 @@ function deleteBtn (e) {
     };
 }; 
 */
+
+// trier option +/-
