@@ -1,7 +1,7 @@
 const form = document.querySelector('#form'); // prends tout le formulaire
 const tableBody = document.querySelector('tbody'); // prends le corps du tableau
 const content = document.querySelector('#newContent'); // sélectionne l'input pour ajouter un élément
-const filter = document.querySelector('#filter'); // sélectionne l'id de l'input pour filtrer 
+const filter = document.querySelector('#filter'); // sélectionne l'id de l'input "rechercher"
 
 newEvent()
 
@@ -102,18 +102,21 @@ function addContent(event) {
 // fonction de filterList
 function filterList(e) {
     const list = e.target.value.toLowerCase();
+
     document.querySelectorAll('.formList').forEach(
         function (select) {
-            const word = select.firstChild.textContent;
-            if (word.toLocaleLowerCase().indexOf(list) != -1) {
-                select.getElementsByClassName.display = 'block';
+            const word = select.value;
+            const parent = select.closest('tr');
+
+            if (word.toLowerCase().indexOf(list) !== 1) {
+                parent.style.display = 'block';
             } else {
-                select.style.display = 'none';
+                parent.style.display = 'none';
             }
         }
     );
 
-    console.log(list);
+    console.log(list); 
 }
 
 // supprimer la ligne
