@@ -108,8 +108,8 @@ function filterList(e) {
             const word = select.value;
             const parent = select.closest('tr');
 
-            if (word.toLowerCase().indexOf(list) !== 1) {
-                parent.style.display = 'block';
+            if (word.toLowerCase().indexOf(list) != 1) {
+                parent.style.display = null ;
             } else {
                 parent.style.display = 'none';
             }
