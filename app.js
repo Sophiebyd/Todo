@@ -105,10 +105,10 @@ function filterList(e) {
 
     document.querySelectorAll('.formList').forEach(
         function (select) {
-            const word = select.value;
+            const word = select.value.toLowerCase();
             const parent = select.closest('tr');
 
-            if (word.toLowerCase().indexOf(list) != 1) {
+            if (word.indexOf(list) !== -1) {
                 parent.style.display = null ;
             } else {
                 parent.style.display = 'none';
