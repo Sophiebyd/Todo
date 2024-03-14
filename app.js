@@ -3,17 +3,14 @@ const tableBody = document.querySelector('tbody'); // prends le corps du tableau
 const content = document.querySelector('#newContent'); // sélectionne l'input pour ajouter un élément
 const filter = document.querySelector('#filter'); // sélectionne l'id de l'input "rechercher"
 
-newEvent()
+// Ajouter un nouveau contenu
+form.addEventListener('submit', addContent);
 
-function newEvent() {
-    form.addEventListener('submit', addContent);
+// filtrer la liste
+filter.addEventListener('keyup', filterList);
 
-    // filtrer la liste
-    filter.addEventListener('keyup', filterList);
-
-    // supprimer une tâche
-    tableBody.addEventListener('click', deleteBtn);
-};
+// supprimer une tâche
+tableBody.addEventListener('click', deleteBtn);
 
 // Ajout de l'event
 function addContent(event) {
@@ -44,28 +41,30 @@ function addContent(event) {
 
     // élément du badge 
     const badge = document.createElement('span');
+    badge.textContent = `${priority}`;
 
-    if (priority === 'Normale') {
+    if (priority === 'Priorité normale') {
+        tr.dataset.priority = 0;
         badge.classList.add('badge', 'bg-primary')
-    } else if (priority === 'Haute') {
+    } else if (priority === 'Priorité haute') {
+        tr.dataset.priority = 1;
         badge.classList.add('badge', 'bg-warning')
     } else {
+        tr.dataset.priority = 2;
         badge.classList.add('badge', 'bg-danger')
     }
-
-    badge.textContent = `${priority}`;
 
     // ajout de la base <br>
     const br = document.createElement('br');
 
     // élement du petit texte
     const smallText = document.createElement('small');
-    smallText.classList.add = ('form-text', 'text-muted');
+    smallText.classList.add('form-text', 'text-muted');
     smallText.textContent = date;
 
     // élement de l'input texte readonly
     const text = document.createElement('input');
-    text.type = ('text');
+    text.type = 'text';
     text.classList.add('form-control', 'formList');
     text.value = content.value;
     text.readOnly = true;
@@ -74,7 +73,7 @@ function addContent(event) {
     const btnDelete = document.createElement('button');
     btnDelete.type = 'submit';
     btnDelete.classList.add('btn', 'btn-danger');
-    btnDelete.textContent = ('Effacer');
+    btnDelete.textContent = 'Effacer';
 
     // placer le bouton effacer à la fin 
     tdBtnDelete.className = 'text-end';
@@ -139,3 +138,27 @@ function deleteBtn (e) {
 */
 
 // trier option +/-
+document.querySelector('#sort').addEventListener('change', (e) => {
+    switch (e.target.value) {
+        case 'option1': return sortByPriorityASC();
+        case 'option2': return sortByPriorityDESC();
+    }
+})
+
+// Trie les todos par priorité +/-
+const sortByPriorityASC = () => {
+    // On récupère toutes les todos et en les converties en items itérable
+    const children = [...tableBody.querySelectorAll('tr')];
+
+    // On remplace tout les enfants de tableBody par le nouveau tri
+    tableBody.replaceChildren(...children.sort((a, b) => b.dataset.priority - a.dataset.priority));
+};
+
+// Trie les todos par priorité -/+
+const sortByPriorityDESC = () => {
+    // On récupère toutes les todos et en les converties en items itérable
+    const children = [...tableBody.querySelectorAll('tr')];
+
+    // On remplace tout les enfants de tableBody par le nouveau tri
+    tableBody.replaceChildren(...children.sort((a, b) => a.dataset.priority - b.dataset.priority));
+};
