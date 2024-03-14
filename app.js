@@ -142,23 +142,46 @@ document.querySelector('#sort').addEventListener('change', (e) => {
     switch (e.target.value) {
         case 'option1': return sortByPriorityASC();
         case 'option2': return sortByPriorityDESC();
+        case 'option3': return sortByCheckboxON();
+        case 'option4': return sortByCheckboxOFF();
+        case 'option(': return sortByDateASC();
     }
 })
 
-// Trie les todos par priorité +/-
+// tri par priorité +/-
 const sortByPriorityASC = () => {
-    // On récupère toutes les todos et en les converties en items itérable
+    // récupère toutes les todos et en les converties en items itérable
     const children = [...tableBody.querySelectorAll('tr')];
 
-    // On remplace tout les enfants de tableBody par le nouveau tri
+    // remplace tout les enfants de tableBody par le nouveau tri
     tableBody.replaceChildren(...children.sort((a, b) => b.dataset.priority - a.dataset.priority));
 };
 
-// Trie les todos par priorité -/+
+// tri  par priorité -/+
 const sortByPriorityDESC = () => {
-    // On récupère toutes les todos et en les converties en items itérable
+    // récupère toutes les todos et en les converties en items itérable
     const children = [...tableBody.querySelectorAll('tr')];
 
-    // On remplace tout les enfants de tableBody par le nouveau tri
+    // remplace tout les enfants de tableBody par le nouveau tri
     tableBody.replaceChildren(...children.sort((a, b) => a.dataset.priority - b.dataset.priority));
+};
+
+// tri par checkbox activé
+const sortByCheckboxON = () => {
+    const children = [...tableBody.querySelectorAll('tr')];
+    tableBody.replaceChildren(...children.sort((a, b) => {
+        const checkboxA = a.querySelector('input[type="checkbox"]');
+        const checkboxB = b.querySelector('input[type="checkbox"]');
+        return checkboxB.checked - checkboxA.checked;
+    }));
+};
+
+// tri par checkbox désactivé
+const sortByCheckboxOFF = () => {
+    const children = [...tableBody.querySelectorAll('tr')];
+    tableBody.replaceChildren(...children.sort((a, b) => {
+        const checkboxA = a.querySelector('input[type="checkbox"]');
+        const checkboxB = b.querySelector('input[type="checkbox"]');
+        return checkboxA.checked - checkboxB.checked;
+    }));
 };
