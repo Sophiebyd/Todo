@@ -144,7 +144,9 @@ document.querySelector('#sort').addEventListener('change', (e) => {
         case 'option2': return sortByPriorityDESC();
         case 'option3': return sortByCheckboxON();
         case 'option4': return sortByCheckboxOFF();
-        case 'option(': return sortByDateASC();
+        case 'option5': return sortByDateASC();
+        case 'option6': return sortByDateDESC();
+        case 'annuler': return reset();
     }
 })
 
@@ -185,3 +187,25 @@ const sortByCheckboxOFF = () => {
         return checkboxA.checked - checkboxB.checked;
     }));
 };
+
+// tri par date +/-
+const sortByDateASC = () => {
+    const children = [...tableBody.querySelectorAll('tr')];
+    tableBody.replaceChildren(...children.sort((a, b) => {
+        const dateA = a.dateset.date;
+        const dateB = b.dateset.date;
+        return dateB - dateA;
+    }));
+};
+
+// tri par date -/+
+const sortByDateDESC = () => {
+    const children = [...tableBody.querySelectorAll('tr')];
+    tableBody.replaceChildren(...children.sort((a, b) => {
+        const dateA = a.dateset.date;
+        const dateB = b.dateset.date;
+        return dateA - dateB;
+    }));
+};
+
+// annuler la selection
