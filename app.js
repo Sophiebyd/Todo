@@ -186,8 +186,7 @@ const sortByPriorityDESC = () => {
 // tri par checkbox activé
 const sortByCheckboxON = () => {
     const children = [...tableBody.querySelectorAll("tr")];
-    tableBody.replaceChildren(
-        ...children.sort((a, b) => {
+    tableBody.replaceChildren(...children.sort((a, b) => {
             const checkboxA = a.querySelector('input[type="checkbox"]');
             const checkboxB = b.querySelector('input[type="checkbox"]');
             return checkboxB.checked - checkboxA.checked;
