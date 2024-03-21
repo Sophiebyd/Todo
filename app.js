@@ -54,8 +54,9 @@ const badge = document.createElement('span');
     const smallText = document.createElement('small');
     smallText.classList.add('form-text', 'text-muted');
     smallText.textContent = date;
+
     // défini le dataset de "date"
-    smallText.dataset.date = date;
+    tr.dataset.date = new Date(date).getTime();
     
     // élement de l'input texte readonly
     const text = document.createElement('input');
@@ -196,8 +197,8 @@ const sortByCheckboxOFF = () => {
 const sortByDateASC = () => {
     const children = [...tableBody.querySelectorAll('tr')];
     tableBody.replaceChildren(...children.sort((a, b) => {
-        const dateA = new Date (a.dataset.date);
-        const dateB = new Date (b.dataset.date);
+        const dateA = +a.dataset.date;
+        const dateB = +b.dataset.date;
         console.log(a);
         return dateB - dateA;
     }));
@@ -207,8 +208,8 @@ const sortByDateASC = () => {
 const sortByDateDESC = () => {
     const children = [...tableBody.querySelectorAll('tr')];
     tableBody.replaceChildren(...children.sort((a, b) => {
-        const dateA = new Date (a.dataset.date);
-        const dateB = new Date (b.dataset.date);
+        const dateA = +a.dataset.date;;
+        const dateB = +b.dataset.date;;
         return dateA - dateB;
     }));
 
