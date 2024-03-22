@@ -61,11 +61,12 @@ function addContent(event) {
   // ajout de la base <br>
   const br = document.createElement("br");
 
+  // élement du petit texte
   const smallText = document.createElement("small");
   smallText.classList.add("form-text", "text-muted");
 
   if (date) {
-    // élement du petit texte
+    // élement du petit texte avec la valeur de la date
     smallText.textContent = date.toLocaleDateString("fr-FR");
 
     if (datePassed) {
