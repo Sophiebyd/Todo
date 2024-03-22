@@ -72,13 +72,11 @@ function addContent(event) {
     if (datePassed) {
       smallText.classList.add("badge", "bg-secondary");
     }
-
+    // ajoute le dataset date avec une valeur en milliseconde
     tr.dataset.date = date.getTime();
   } else {
     smallText.textContent = "pas de date limite";
   }
-
-  // défini le dataset de "date"
 
   // élement de l'input texte readonly
   const text = document.createElement("input");
@@ -238,6 +236,15 @@ const sortByDateASC = () => {
     })
   );
 };
+
+/* if (date = number ) {
+    const dateA = +a.dataset.date;
+    const dateB = +b.dataset.date;
+    return dateB - dateA;
+} else {
+    ne fais rien // mets à la fin du tableau
+}
+*/
 
 // tri par date -/+
 const sortByDateDESC = () => {
