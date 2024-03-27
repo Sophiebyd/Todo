@@ -251,6 +251,8 @@ const sortByDateDESC = () => {
   );
 };
 
+// Infinity = mets soit la valeur la plus haute soit la plus basse (0)
+
 // annuler la selection 
 function reset() {
   document.querySelector("#sort").value = "Trier par";
