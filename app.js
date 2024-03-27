@@ -21,7 +21,7 @@ function addContent(event) {
     date = new Date(document.querySelector("#date").value);
   }
 
-  console.log(date);
+  //  console.log(date);
 
   // vérifier si la date est dépassée
   const currentDate = new Date();
@@ -125,7 +125,7 @@ function filterList(e) {
     }
   });
 
-  console.log(list);
+  //  console.log(list);
 }
 
 // supprimer la ligne
@@ -237,15 +237,6 @@ const sortByDateASC = () => {
   );
 };
 
-/* if (date = number ) {
-    const dateA = +a.dataset.date;
-    const dateB = +b.dataset.date;
-    return dateB - dateA;
-} else {
-    ne fais rien // mets à la fin du tableau
-}
-*/
-
 // tri par date -/+
 const sortByDateDESC = () => {
   const children = [...tableBody.querySelectorAll("tr")];
@@ -253,7 +244,14 @@ const sortByDateDESC = () => {
     ...children.sort((a, b) => {
       const dateA = +a.dataset.date;
       const dateB = +b.dataset.date;
+      console.log(dateA);
       return dateA - dateB;
+
     })
   );
 };
+
+// annuler la selection 
+function reset() {
+  document.querySelector("#sort").value = "Trier par";
+}
