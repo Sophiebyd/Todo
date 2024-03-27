@@ -229,8 +229,8 @@ const sortByDateASC = () => {
   const children = [...tableBody.querySelectorAll("tr")];
   tableBody.replaceChildren(
     ...children.sort((a, b) => {
-      const dateA = +a.dataset.date;
-      const dateB = +b.dataset.date;
+      const dateA = +a.dataset.date || Infinity;
+      const dateB = +b.dataset.date || Infinity;
       console.log(dateA);
       return dateB - dateA;
     })
@@ -242,8 +242,8 @@ const sortByDateDESC = () => {
   const children = [...tableBody.querySelectorAll("tr")];
   tableBody.replaceChildren(
     ...children.sort((a, b) => {
-      const dateA = +a.dataset.date;
-      const dateB = +b.dataset.date;
+      const dateA = +a.dataset.date || Infinity;
+      const dateB = +b.dataset.date || Infinity;
       console.log(dateA);
       return dateA - dateB;
 
