@@ -11,20 +11,25 @@ function addContent(event) {
 
   // récupérer la priorité
   const priority = document.querySelector("#priority").value;
-
-  // stocker la priorité dans le local storage
-  localStorage.setItem('Priority', priority);
-
-  // récupérer la priorité dans le local storage 
-  let priorityStorage = localStorage.getItem('Priority'); 
+  // récupère les anciennes priorités ou créer un nouveau tableau vide
+  let priorityArray = JSON.parse(localStorage.getItem("Priorities")) || [];
+  // insérer la nouvelle date dans le tableau
+  priorityArray.push(priority);
+  // met à jour le tableau avec le nouveau contenu
+  localStorage.setItem("Priorities", JSON.stringify(priorityArray));
 
   let date;
-
   // if selector !== vide
   //  date = new date
 
   if (document.querySelector("#date").value !== "") {
     date = new Date(document.querySelector("#date").value);
+    // récupère les anciennes dates ou créer un nouveau tableau vide
+    let dateArray = JSON.parse(localStorage.getItem("Dates")) || [];
+    // insérer la nouvelle date dans le tableau
+    dateArray.push(date);
+    // met à jour le tableau avec le nouveau contenu
+    localStorage.setItem("Dates", JSON.stringify(dateArray));
   }
 
   //  console.log(date);
@@ -114,6 +119,16 @@ function addContent(event) {
   tr.appendChild(tdText);
   tr.appendChild(tdBtnDelete);
   tableBody.appendChild(tr);
+
+  // récupère le contenu qu'on veut sauvegarder
+  let contentStorage = document.querySelector("#newContent").value;
+  // récupère l'ancien contenu existant
+  let contentArray = JSON.parse(localStorage.getItem("Content")) || [];
+  // ajouter l'élément à l'array
+  contentArray.push(contentStorage);
+  // fait une mise à jour de l'array avec le nouveau contenu
+  localStorage.setItem("Content", JSON.stringify(contentArray));
+  console.log(contentArray);
 }
 
 // fonction de filterList
@@ -155,14 +170,8 @@ function deleteBtn (e) {
 }; 
 */
 
-// sauvegarder dans le locale storage le contenu
-function saveContent() {
-  let content = document.querySelector("#newContent").value;
-  localStorage.setItem('Content', content);
-}
 // Ajouter un nouveau contenu
 form.addEventListener("submit", addContent);
-
 
 // filtrer la liste
 filter.addEventListener("keyup", filterList);
