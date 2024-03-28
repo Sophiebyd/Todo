@@ -12,9 +12,15 @@ function addContent(event) {
   // récupérer la priorité
   const priority = document.querySelector("#priority").value;
 
+  // stocker la priorité dans le local storage
+  localStorage.setItem('Priority', priority);
+
+  // récupérer la priorité dans le local storage 
+  let priorityStorage = localStorage.getItem('Priority'); 
+
   let date;
 
-  // if selector =! vide
+  // if selector !== vide
   //  date = new date
 
   if (document.querySelector("#date").value !== "") {
@@ -149,8 +155,14 @@ function deleteBtn (e) {
 }; 
 */
 
+// sauvegarder dans le locale storage le contenu
+function saveContent() {
+  let content = document.querySelector("#newContent").value;
+  localStorage.setItem('Content', content);
+}
 // Ajouter un nouveau contenu
 form.addEventListener("submit", addContent);
+
 
 // filtrer la liste
 filter.addEventListener("keyup", filterList);
@@ -251,7 +263,7 @@ const sortByDateDESC = () => {
   );
 };
 
-// Infinity = mets soit la valeur la plus haute soit la plus basse (0)
+// Infinity = mets soit la valeur la plus haute
 
 // annuler la selection 
 function reset() {
